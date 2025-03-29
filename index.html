@@ -269,7 +269,7 @@
     
     .feature-img {
       height: 200px;
-      background: url('images/workshop-placeholder.jpg') center/cover;
+      background: var(--light-gray) url('images/workshop-placeholder.jpg') center/cover;
     }
     
     .feature-content {
@@ -315,59 +315,72 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
     
-    /* EVENTS SECTION STYLES */
-    .events-container {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
+    /* EVENTS SECTION STYLES - Now matching gallery style */
+    .events-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
     
-    .event-card {
-      display: flex;
-      flex-wrap: wrap;
-      background: var(--light-gray);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    
-    .dark-section .event-card {
-      background: var(--darkest-blue);
-    }
-    
-    .event-img {
-      flex: 1;
-      min-width: 300px;
-      height: 250px;
+    .event-item {
+      height: 300px;
       background-size: cover;
       background-position: center;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
     }
     
-    .event-content {
-      flex: 2;
-      min-width: 300px;
-      padding: 1.5rem;
+    .event-item:hover {
+      transform: scale(1.03);
     }
     
-    .event-date {
+    .event-item:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(36, 52, 87, 0.8), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .event-item:hover:before {
+      opacity: 1;
+    }
+    
+    .event-item-content {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: var(--light-gray);
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .event-item:hover .event-item-content {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .event-item-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .event-item-date {
       display: inline-block;
       background: var(--primary-blue);
       color: var(--light-gray);
-      padding: 0.5rem 1rem;
+      padding: 0.3rem 0.8rem;
       border-radius: 4px;
-      margin-bottom: 1rem;
-    }
-    
-    .event-title {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--dark-blue);
-    }
-    
-    .dark-section .event-title {
-      color: var(--light-gray);
+      font-size: 0.9rem;
     }
     
     /* GALLERY SECTION STYLES */
@@ -580,6 +593,19 @@
     .skip-link:focus {
       top: 0;
     }
+
+    /* Visually hidden helper */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
     
     @media (max-width: 768px) {
       header {
@@ -621,17 +647,22 @@
         padding: 3rem 1rem;
       }
       
-      .event-card, .feature-box {
+      .feature-box {
         flex-direction: column;
       }
       
-      .event-img, .feature-img {
+      .feature-img {
         width: 100%;
         min-width: 100%;
       }
 
       .menu-toggle {
         display: block;
+      }
+
+      .events-gallery,
+      .gallery {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -725,42 +756,33 @@
       </div>
     </section>
 
-    <!-- EVENTS SECTION -->
+    <!-- EVENTS SECTION - Now in gallery style -->
     <section class="section light-section" id="events">
       <h2 class="section-title">Upcoming Events</h2>
-      <div class="events-container">
+      <div class="events-gallery">
         <!-- Event 1 -->
-        <div class="event-card">
-          <div class="event-img" style="background-image: url('images/events/event1.jpg');" aria-label="Tech Innovation Summit event"></div>
-          <div class="event-content">
-            <span class="event-date">September 15, 2024</span>
-            <h3 class="event-title">Tech Innovation Summit</h3>
-            <p>Annual conference featuring industry leaders discussing emerging technologies and career opportunities in IT.</p>
-            <a href="#" class="cta-btn primary-btn">Register Now</a>
+        <a href="https://www.facebook.com/explicitpupspc/posts/event1" class="event-item" style="background-image: url('images/events/event1.jpg');" aria-label="Tech Innovation Summit event">
+          <div class="event-item-content">
+            <div class="event-item-date">September 15, 2024</div>
+            <h3 class="event-item-title">Tech Innovation Summit</h3>
           </div>
-        </div>
+        </a>
         
         <!-- Event 2 -->
-        <div class="event-card">
-          <div class="event-img" style="background-image: url('images/events/event2.jpg');" aria-label="Code Marathon event"></div>
-          <div class="event-content">
-            <span class="event-date">October 5-6, 2024</span>
-            <h3 class="event-title">Code Marathon 2024</h3>
-            <p>48-hour hackathon challenging participants to develop solutions for real-world problems.</p>
-            <a href="#" class="cta-btn primary-btn">Join Team</a>
+        <a href="https://www.facebook.com/explicitpupspc/posts/event2" class="event-item" style="background-image: url('images/events/event2.jpg');" aria-label="Code Marathon event">
+          <div class="event-item-content">
+            <div class="event-item-date">October 5-6, 2024</div>
+            <h3 class="event-item-title">Code Marathon 2024</h3>
           </div>
-        </div>
+        </a>
         
         <!-- Event 3 -->
-        <div class="event-card">
-          <div class="event-img" style="background-image: url('images/events/event3.jpg');" aria-label="Career Preparation Workshop"></div>
-          <div class="event-content">
-            <span class="event-date">November 20, 2024</span>
-            <h3 class="event-title">Career Preparation Workshop</h3>
-            <p>Resume building, mock interviews, and networking with tech company recruiters.</p>
-            <a href="#" class="cta-btn primary-btn">RSVP</a>
+        <a href="https://www.facebook.com/explicitpupspc/posts/event3" class="event-item" style="background-image: url('images/events/event3.jpg');" aria-label="Career Preparation Workshop">
+          <div class="event-item-content">
+            <div class="event-item-date">November 20, 2024</div>
+            <h3 class="event-item-title">Career Preparation Workshop</h3>
           </div>
-        </div>
+        </a>
       </div>
     </section>
 
@@ -851,7 +873,7 @@
 
     // Add lazy loading to images
     document.addEventListener('DOMContentLoaded', function() {
-      const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+      const lazyImages = [].slice.call(document.querySelectorAll('img[loading="lazy"]'));
       
       if ('loading' in HTMLImageElement.prototype) {
         // Native lazy loading is supported
@@ -862,9 +884,8 @@
         // Fallback for browsers without native lazy loading
         const lazyLoad = function() {
           lazyImages.forEach(img => {
-            if (img.getBoundingClientRect().top < window.innerHeight + 100) {
+            if (img.getBoundingClientRect().top < window.innerHeight + 100 && !img.src) {
               img.src = img.dataset.src;
-              img.removeAttribute('data-src');
             }
           });
         };
