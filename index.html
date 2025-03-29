@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EXPLICIT - Explorers in Communication and Information Technology</title>
+  <meta name="description" content="Official academic organization of BSIT students at PUP San Pedro Campus. Join us for tech workshops, networking, and collaborative projects.">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-blue: #5178c7;
+      --light-gray: #e5e5e5;
+      --secondary-blue: #6c88bc;
+      --medium-gray: #656566;
+      --black: #050505;
+      --navy-blue: #3b485f;
+      --dark-blue: #243457;
+      --dark-gray: #353433;
+      --light-gray-alt: #a49c9c;
+      --darkest-blue: #1f242c;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      background-color: var(--light-gray);
+      color: var(--dark-gray);
+      line-height: 1.6;
+    }
+    
+    header {
+      background: var(--dark-blue);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo {
+      width: 50px;
+      height: 50px;
+      background-color: var(--light-gray);
+      border-radius: 50%;
+      margin-right: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark-blue);
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    
+    .logo-text {
+      color: var(--light-gray);
+    }
+    
+    .logo-text h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .logo-text p {
+      font-size: 0.8rem;
+      color: var(--secondary-blue);
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav ul li {
+      margin-left: 2rem;
+    }
+    
+    nav ul li a {
+      color: var(--light-gray);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    nav ul li a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--primary-blue);
+      bottom: -5px;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+    
+    nav ul li a:hover:after {
+      width: 100%;
+    }
+
+    .hero {
+      height: 100vh;
+      background: url('images/hero-bg.jpg') center/cover no-repeat;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    
+    .hero:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(31, 36, 44, 0.9), rgba(36, 52, 87, 0.7));
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      color: var(--light-gray);
+      padding: 0 5%;
+      max-width: 800px;
+      margin-left: 5%;
+    }
+    
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    
+    h1 span {
+      color: var(--primary-blue);
+      display: block;
+    }
+    
+    .tagline {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: var(--light-gray);
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .cta-btn {
+      padding: 0.8rem 2rem;
+      border-radius: 4px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+    }
+    
+    .primary-btn {
+      background: var(--primary-blue);
+      color: var(--light-gray);
+      border: none;
+    }
+    
+    .primary-btn:hover {
+      background: var(--secondary-blue);
+    }
+    
+    .secondary-btn {
+      background: transparent;
+      color: var(--light-gray);
+      border: 2px solid var(--light-gray);
+    }
+    
+    .secondary-btn:hover {
+      background: rgba(229, 229, 229, 0.1);
+    }
+    
+    .section {
+      padding: 5rem 5%;
+    }
+    
+    .dark-section {
+      background: var(--navy-blue);
+      color: var(--light-gray);
+    }
+    
+    .light-section {
+      background: var(--light-gray);
+      color: var(--dark-gray);
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    .light-section .section-title {
+      color: var(--dark-blue);
+    }
+    
+    .dark-section .section-title {
+      color: var(--light-gray);
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 4px;
+      background: var(--primary-blue);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    
+    .feature-box {
+      flex: 1;
+      min-width: 300px;
+      max-width: 400px;
+      background: var(--light-gray);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .dark-section .feature-box {
+      background: var(--darkest-blue);
+    }
+    
+    .feature-box:hover {
+      transform: translateY(-10px);
+    }
+    
+    .feature-img {
+      height: 200px;
+      background: url('images/workshop-placeholder.jpg') center/cover;
+    }
+    
+    .feature-content {
+      padding: 1.5rem;
+    }
+    
+    .feature-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--dark-blue);
+    }
+    
+    .dark-section .feature-title {
+      color: var(--primary-blue);
+    }
+    
+    .feature-box p {
+      color: var(--medium-gray);
+    }
+    
+    .dark-section .feature-box p {
+      color: var(--light-gray-alt);
+    }
+    
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 3rem;
+    }
+    
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .about-img {
+      flex: 1;
+      min-width: 300px;
+      height: 400px;
+      background: url('images/about-img.jpg') center/cover;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .events-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .fb-page {
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .gallery-item {
+      height: 250px;
+      background: url('images/gallery-placeholder.jpg') center/cover;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.03);
+    }
+    
+    .gallery-item:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(36, 52, 87, 0.8), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .gallery-item:hover:before {
+      opacity: 1;
+    }
+    
+    .gallery-item-title {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: var(--light-gray);
+      font-size: 1.2rem;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-item-title {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .social-link {
+      width: 50px;
+      height: 50px;
+      background: var(--primary-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light-gray);
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      background: var(--secondary-blue);
+      transform: translateY(-5px);
+    }
+    
+    footer {
+      background: var(--darkest-blue);
+      color: var(--light-gray);
+      padding: 3rem 5%;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    
+    .footer-col {
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    .footer-title {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+      color: var(--light-gray);
+    }
+    
+    .footer-title:after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 3px;
+      background: var(--primary-blue);
+      bottom: 0;
+      left: 0;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.7rem;
+    }
+    
+    .footer-links a {
+      color: var(--light-gray-alt);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary-blue);
+    }
+    
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(229, 229, 229, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light-gray);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      background: var(--primary-blue);
+    }
+    
+    .copyright {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(229, 229, 229, 0.1);
+      color: var(--light-gray-alt);
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 1rem;
+      }
+      
+      .logo-container {
+        margin-bottom: 1rem;
+      }
+      
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      nav ul li {
+        margin: 0.5rem;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .tagline {
+        font-size: 1.2rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .section {
+        padding: 3rem 1rem;
+      }
+      
+      .fb-page {
+        width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <div class="logo">E</div>
+      <div class="logo-text">
+        <h1>EXPLICIT</h1>
+        <p>Explorers in Communication and Information Technology</p>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HOME PAGE SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Explorers in <span>Communication</span> and Information Technology</h1>
+      <p class="tagline">Connecting students, sharing knowledge, and pushing technological boundaries together</p>
+      <div class="cta-buttons">
+        <a href="https://www.facebook.com/explicitpupspc" class="cta-btn primary-btn">Join Our Facebook Group</a>
+        <a href="#about" class="cta-btn secondary-btn">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light-section">
+    <h2 class="section-title">What We Offer</h2>
+    <div class="features">
+      <div class="feature-box">
+        <div class="feature-img"></div>
+        <div class="feature-content">
+          <h3 class="feature-title">Workshops & Training</h3>
+          <p>Regular skill-building sessions on the latest technologies and communication strategies, led by experts and peers.</p>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div class="feature-img"></div>
+        <div class="feature-content">
+          <h3 class="feature-title">Networking Events</h3>
+          <p>Connect with fellow students, faculty, and industry professionals to build your personal and professional network.</p>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div class="feature-img"></div>
+        <div class="feature-content">
+          <h3 class="feature-title">Collaborative Projects</h3>
+          <p>Work on real-world tech and communication projects to build your portfolio and gain practical experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT US PAGE SECTION -->
+  <section class="section dark-section" id="about">
+    <h2 class="section-title">About EXPLICIT</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>The Explorers in Communication and Information Technology (EXPLICIT) is the official academic organization of Bachelor of Science in Information Technology (BSIT) students of the Polytechnic University of the Philippines - San Pedro Campus</p>
+        <br>
+        <div class="social-links">
+          <a href="https://www.facebook.com/explicitpupspc" class="social-link"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="about-img">
+        <!-- Image placeholder for about section -->
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS PAGE SECTION -->
+  <section class="section light-section" id="events">
+    <h2 class="section-title">Upcoming Events</h2>
+    <div class="events-container">
+      <div class="fb-page" 
+           data-href="https://www.facebook.com/explicitpupspc" 
+           data-tabs="events" 
+           data-width="1000" 
+           data-height="600"
+           data-small-header="false" 
+           data-adapt-container-width="true">
+        <blockquote cite="https://www.facebook.com/explicitpupspc" class="fb-xfbml-parse-ignore">
+          <a href="https://www.facebook.com/explicitpupspc">EXPLICIT PUP-SPC on Facebook</a>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY PAGE SECTION -->
+  <section class="section dark-section" id="gallery">
+    <h2 class="section-title">Our Gallery</h2>
+    <div class="gallery">
+      <div class="gallery-item">
+        <h3 class="gallery-item-title">Workshop Series 2024</h3>
+      </div>
+      <div class="gallery-item">
+        <h3 class="gallery-item-title">Tech Conference</h3>
+      </div>
+      <div class="gallery-item">
+        <h3 class="gallery-item-title">Team Building Retreat</h3>
+      </div>
+      <div class="gallery-item">
+        <h3 class="gallery-item-title">Hackathon Winners</h3>
+      </div>
+      <div class="gallery-item">
+        <h3 class="gallery-item-title">Industry Visit</h3>
+      </div>
+      <div class="gallery-item">
+        <h3 class="gallery-item-title">Guest Speaker Series</h3>
+      </div>
+      <div class="gallery-item">
+        <h3 class="gallery-item-title">Project Showcase</h3>
+      </div>
+      <div class="gallery-item">
+        <h3 class="gallery-item-title">Community Outreach</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3 class="footer-title">EXPLICIT</h3>
+        <p>Explorers in Communication and Information Technology - A student-led organization fostering growth and collaboration.</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/explicitpupspc" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="https://www.facebook.com/explicitpupspc">Facebook Group</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-title">Contact Us</h3>
+        <ul class="footer-links">
+          <li>explicit@university.edu</li>
+          <li>Student Center, Room 302</li>
+          <li>University Campus</li>
+          <li>Faculty Advisor: Prof. Jane Smith</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-title">Join Our Community</h3>
+        <p>Sign up to our newsletter to stay updated with the latest events, workshops, and opportunities.</p>
+        <form id="newsletter-form" action="#" method="post">
+          <input type="email" name="email" placeholder="Your email address" required style="padding: 10px; width: 100%; margin-top: 10px; border-radius: 4px; border: none;">
+          <button type="submit" style="background: var(--primary-blue); color: var(--light-gray); border: none; padding: 10px; width: 100%; margin-top: 10px; border-radius: 4px; cursor: pointer;">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Explorers in Communication and Information Technology (EXPLICIT). All Rights Reserved.
+    </div>
+  </footer>
+
+  <!-- Facebook SDK -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" 
+          src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0">
+  </script>
+
+  <!-- Newsletter Form Script -->
+  <script>
+    document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for subscribing!');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
