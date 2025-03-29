@@ -4,8 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EXPLICIT - Explorers in Communication and Information Technology</title>
-  <meta name="description" content="Official academic organization of BSIT students at PUP San Pedro Campus">
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <meta name="description" content="Official academic organization of BSIT students at PUP San Pedro Campus. Join us for tech workshops and networking.">
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <!-- Font Awesome for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
@@ -60,7 +65,6 @@
       height: 50px;
       margin-right: 15px;
       object-fit: contain;
-      background: transparent !important;
     }
     
     .logo-text {
@@ -304,62 +308,16 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
     
-    /* EVENTS SECTION STYLES */
     .events-container {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
       max-width: 1000px;
       margin: 0 auto;
     }
     
-    .event-card {
-      display: flex;
-      flex-wrap: wrap;
-      background: var(--light-gray);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    .fb-page {
+      margin: 0 auto;
+      width: 100%;
     }
     
-    .dark-section .event-card {
-      background: var(--darkest-blue);
-    }
-    
-    .event-img {
-      flex: 1;
-      min-width: 300px;
-      height: 250px;
-      background-size: cover;
-      background-position: center;
-    }
-    
-    .event-content {
-      flex: 2;
-      min-width: 300px;
-      padding: 1.5rem;
-    }
-    
-    .event-date {
-      display: inline-block;
-      background: var(--primary-blue);
-      color: var(--light-gray);
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      margin-bottom: 1rem;
-    }
-    
-    .event-title {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--dark-blue);
-    }
-    
-    .dark-section .event-title {
-      color: var(--light-gray);
-    }
-    
-    /* GALLERY SECTION STYLES */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -369,8 +327,7 @@
     
     .gallery-item {
       height: 250px;
-      background-size: cover;
-      background-position: center;
+      background: url('images/gallery-placeholder.jpg') center/cover;
       border-radius: 8px;
       overflow: hidden;
       position: relative;
@@ -420,7 +377,40 @@
       gap: 1rem;
       margin-top: 2rem;
     }
-    
+    /* About Section Image Styles */
+	.about-img {
+		flex: 1;
+		min-width: 300px;
+		height: 400px;
+		border-radius: 8px;
+		overflow: hidden;
+		position: relative;
+		box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+	}
+
+	.about-photo {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.3s ease;
+	}
+
+	.about-img:hover .about-photo {
+		transform: scale(1.05);
+	}
+
+	.image-caption {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: rgba(36, 52, 87, 0.8);
+		color: white;
+		padding: 10px;
+		text-align: center;
+		font-size: 0.9rem;
+	}
+	
     .social-link {
       width: 50px;
       height: 50px;
@@ -560,13 +550,21 @@
         padding: 3rem 1rem;
       }
       
-      .event-card, .feature-box {
-        flex-direction: column;
-      }
-      
-      .event-img, .feature-img {
-        width: 100%;
-        min-width: 100%;
+      .fb-page {
+        width: 100% !important;
+		
+	.about-text h3 {
+		color: var(--primary-blue);
+		margin: 1.5rem 0 0.8rem;
+		font-size: 1.3rem;
+	}
+	.about-text ul {
+		padding-left: 1.5rem;
+		margin: 0.5rem 0;
+	}
+	.about-text li {
+		margin-bottom: 0.4rem;
+	}
       }
     }
   </style>
@@ -574,6 +572,7 @@
 <body>
   <header>
     <div class="logo-container">
+      <!-- Replace with your logo -->
       <img src="images/logo.png" alt="EXPLICIT Logo" class="logo-image">
       <div class="logo-text">
         <h1>EXPLICIT</h1>
@@ -592,7 +591,7 @@
   </header>
 
   <!-- HERO SECTION -->
-  <section class="hero">
+  <section class="hero" style="background: url('images/hero-bg.jpg') center/cover no-repeat;">
     <div class="hero-content">
       <h1>Explorers in <span>Communication</span> and Information Technology</h1>
       <p class="tagline">Connecting students, sharing knowledge, and pushing technological boundaries together</p>
@@ -604,92 +603,80 @@
   </section>
 
   <!-- WHAT WE OFFER SECTION -->
-  <section class="section light-section">
-    <h2 class="section-title">What We Offer</h2>
-    <div class="features">
-      <div class="feature-box">
-        <div class="feature-img"></div>
-        <div class="feature-content">
-          <h3 class="feature-title">Excellence in All Aspects</h3>
-          <p>We cultivate a culture of high standards in academics, projects, and professional development through rigorous training and mentorship.</p>
-        </div>
-      </div>
-      <div class="feature-box">
-        <div class="feature-img"></div>
-        <div class="feature-content">
-          <h3 class="feature-title">A Collective of Aspiring IT Students</h3>
-          <p>Join our vibrant community of tech enthusiasts where collaboration and knowledge-sharing drive innovation.</p>
-        </div>
-      </div>
-      <div class="feature-box">
-        <div class="feature-img"></div>
-        <div class="feature-content">
-          <h3 class="feature-title">Programs to Enforce Learning</h3>
-          <p>Structured workshops and hands-on projects bridge the gap between theory and real-world application.</p>
-        </div>
+<section class="section light-section">
+  <h2 class="section-title">What We Offer</h2>
+  <div class="features">
+    <!-- Excellence -->
+    <div class="feature-box">
+      <div class="feature-img" style="background: url('images/excellence-bg.jpg') center/cover;"></div>
+      <div class="feature-content">
+        <h3 class="feature-title">Excellence in All Aspects</h3>
+        <p>We cultivate a culture of high standards in academics, projects, and professional development. Our workshops and mentorship programs ensure members achieve their full potential.</p>
       </div>
     </div>
-  </section>
+
+    <!-- Community -->
+    <div class="feature-box">
+      <div class="feature-img" style="background: url('images/community-bg.jpg') center/cover;"></div>
+      <div class="feature-content">
+        <h3 class="feature-title">A Collective of Aspiring IT Students</h3>
+        <p>Join a vibrant network of like-minded individuals passionate about technology. Collaborate, share ideas, and grow together in a supportive environment.</p>
+      </div>
+    </div>
+
+    <!-- Programs -->
+    <div class="feature-box">
+      <div class="feature-img" style="background: url('images/programs-bg.jpg') center/cover;"></div>
+      <div class="feature-content">
+        <h3 class="feature-title">Programs to Enforce Learning and Coordination</h3>
+        <p>From hackathons to industry talks, our structured programs bridge classroom knowledge with real-world applications while fostering teamwork.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- ABOUT US SECTION -->
-  <section class="section dark-section" id="about">
-    <h2 class="section-title">About EXPLICIT</h2>
-    <div class="about-content">
-      <div class="about-text">
-        <h3>Our Legacy</h3>
-        <p>Founded in 2006 as <strong>SPECS</strong> (Students Proficient in Electronics and Communication System), we transitioned to <strong>EXPLICIT</strong> in 2010, marking a new era of technological exploration.</p>
-        
-        <h3>Our Logo</h3>
-        <p>The EXPLICIT logo embodies our identity through symbols representing the BSIT program's founding year, logic gates, programming languages, and computer hardware.</p>
+<section class="section dark-section" id="about">
+  <h2 class="section-title">About EXPLICIT</h2>
+  <div class="about-content">
+    <div class="about-text">
+      <h3>Our Legacy</h3>
+      <p>Founded in 2006 as <strong>SPECS</strong> (Students Proficient in Electronics and Communication System), we transitioned to <strong>EXPLICIT</strong> in 2010, marking a new era of technological exploration.</p>
+      
+      <h3>Our Logo</h3>
+      <p>The EXPLICIT logo embodies our identity through symbols representing the BSIT program's founding year, logic gates, programming languages, and computer hardware.</p>
 
-        <h3>Beyond Academics</h3>
-        <p>We host annual events like General Assembly and IT Week, participate in school initiatives, and maintain computer labs through hands-on member activities.</p>
+      <h3>Beyond Academics</h3>
+      <p>We host annual events like General Assembly and IT Week, participate in school initiatives, and maintain computer labs through hands-on member activities.</p>
 
-        <div class="social-links">
-          <a href="https://www.facebook.com/explicitpupspc" class="social-link"><i class="fab fa-facebook-f"></i></a>
-        </div>
-      </div>
-      <div class="about-img">
-        <!-- Image will be loaded via CSS background -->
+      <div class="social-links">
+        <a href="https://www.facebook.com/explicitpupspc" class="social-link"><i class="fab fa-facebook-f"></i></a>
       </div>
     </div>
-  </section>
+    
+    <!-- Image Container -->
+    <div class="about-img">
+      <img src="images/about-team.jpg"  
+           class="about-photo">
+      <div class="image-caption">EXPLICIT General Assembly 2024 "Keep The Fire Burning"</div>
+    </div>
+  </div>
+</section>
 
-  <!-- EVENTS SECTION -->
+  <!-- EVENTS SECTION (Facebook Embedded) -->
   <section class="section light-section" id="events">
     <h2 class="section-title">Upcoming Events</h2>
     <div class="events-container">
-      <!-- Event 1 -->
-      <div class="event-card">
-        <div class="event-img" style="background-image: url('images/events/event1.jpg');"></div>
-        <div class="event-content">
-          <span class="event-date">September 15, 2024</span>
-          <h3 class="event-title">Tech Innovation Summit</h3>
-          <p>Annual conference featuring industry leaders discussing emerging technologies and career opportunities in IT.</p>
-          <a href="#" class="cta-btn primary-btn">Register Now</a>
-        </div>
-      </div>
-      
-      <!-- Event 2 -->
-      <div class="event-card">
-        <div class="event-img" style="background-image: url('images/events/event2.jpg');"></div>
-        <div class="event-content">
-          <span class="event-date">October 5-6, 2024</span>
-          <h3 class="event-title">Code Marathon 2024</h3>
-          <p>48-hour hackathon challenging participants to develop solutions for real-world problems.</p>
-          <a href="#" class="cta-btn primary-btn">Join Team</a>
-        </div>
-      </div>
-      
-      <!-- Event 3 -->
-      <div class="event-card">
-        <div class="event-img" style="background-image: url('images/events/event3.jpg');"></div>
-        <div class="event-content">
-          <span class="event-date">November 20, 2024</span>
-          <h3 class="event-title">Career Preparation Workshop</h3>
-          <p>Resume building, mock interviews, and networking with tech company recruiters.</p>
-          <a href="#" class="cta-btn primary-btn">RSVP</a>
-        </div>
+      <div class="fb-page" 
+           data-href="https://www.facebook.com/explicitpupspc" 
+           data-tabs="timeline" 
+           data-width="1000" 
+           data-height="600"
+           data-small-header="false" 
+           data-adapt-container-width="true">
+        <blockquote cite="https://www.facebook.com/explicitpupspc" class="fb-xfbml-parse-ignore">
+          <a href="https://www.facebook.com/explicitpupspc">EXPLICIT PUP-SPC on Facebook</a>
+        </blockquote>
       </div>
     </div>
   </section>
@@ -698,72 +685,93 @@
   <section class="section dark-section" id="gallery">
     <h2 class="section-title">Our Gallery</h2>
     <div class="gallery">
-      <div class="gallery-item" style="background-image: url('images/gallery/gallery1.jpg');">
-        <h3 class="gallery-item-title">2023 IT Week</h3>
+      <div class="gallery-item">
+        <h3 class="gallery-item-title">Workshop Series 2024</h3>
       </div>
-      <div class="gallery-item" style="background-image: url('images/gallery/gallery2.jpg');">
-        <h3 class="gallery-item-title">Lab Maintenance</h3>
+      <div class="gallery-item">
+        <h3 class="gallery-item-title">Tech Conference</h3>
       </div>
-      <div class="gallery-item" style="background-image: url('images/gallery/gallery3.jpg');">
+      <div class="gallery-item">
+        <h3 class="gallery-item-title">Team Building Retreat</h3>
+      </div>
+      <div class="gallery-item">
         <h3 class="gallery-item-title">Hackathon Winners</h3>
       </div>
-      <div class="gallery-item" style="background-image: url('images/gallery/gallery4.jpg');">
-        <h3 class="gallery-item-title">Guest Lectures</h3>
+      <div class="gallery-item">
+        <h3 class="gallery-item-title">Industry Visit</h3>
       </div>
-      <div class="gallery-item" style="background-image: url('images/gallery/gallery5.jpg');">
-        <h3 class="gallery-item-title">Team Building</h3>
+      <div class="gallery-item">
+        <h3 class="gallery-item-title">Guest Speaker Series</h3>
       </div>
-      <div class="gallery-item" style="background-image: url('images/gallery/gallery6.jpg');">
-        <h3 class="gallery-item-title">Campus Events</h3>
+      <div class="gallery-item">
+        <h3 class="gallery-item-title">Project Showcase</h3>
+      </div>
+      <div class="gallery-item">
+        <h3 class="gallery-item-title">Community Outreach</h3>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT SECTION -->
-  <footer id="contact">
-    <div class="footer-content">
-      <div class="footer-col">
-        <h3 class="footer-title">EXPLICIT</h3>
-        <p>Explorers in Communication and Information Technology - A student-led organization fostering growth and collaboration.</p>
-        <div class="social-icons">
-          <a href="https://www.facebook.com/explicitpupspc" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h3 class="footer-title">Quick Links</h3>
-        <ul class="footer-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#events">Events</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3 class="footer-title">Contact Us</h3>
-        <ul class="footer-links">
-          <li><a href="https://www.facebook.com/explicitpupspc" target="_blank">Facebook Page</a></li>
-          <li><a href="mailto:explicitpupspc@gmail.com">explicitpupspc@gmail.com</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3 class="footer-title">Join Our Community</h3>
-        <p>Sign up to our newsletter to stay updated with the latest events and opportunities.</p>
-        <form id="newsletter-form" action="#" method="post">
-          <input type="email" name="email" placeholder="Your email address" required>
-          <button type="submit">Subscribe</button>
-        </form>
+  <!-- CONTACT/FOOTER SECTION -->
+<footer id="contact">
+  <div class="footer-content">
+    <!-- Keep Organization Info -->
+    <div class="footer-col">
+      <h3 class="footer-title">EXPLICIT</h3>
+      <p>Explorers in Communication and Information Technology - A student-led organization fostering growth and collaboration.</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/explicitpupspc" class="social-icon"><i class="fab fa-facebook-f"></i></a>
       </div>
     </div>
-    <div class="copyright">
-      &copy; 2025 EXPLICIT PUP-SPC. All Rights Reserved.
+
+    <!-- Keep Quick Links -->
+    <div class="footer-col">
+      <h3 class="footer-title">Quick Links</h3>
+      <ul class="footer-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://www.facebook.com/explicitpupspc">Facebook Group</a></li>
+      </ul>
     </div>
-  </footer>
+
+    <!-- Simplified Contact Info (Text Only) -->
+    <div class="footer-col">
+      <h3 class="footer-title">Contact Us</h3>
+      <ul class="footer-links">
+        <li><a href="https://www.facebook.com/explicitpupspc" target="_blank">Facebook Page</a></li>
+        <li><a href="mailto:explicitpupspc@gmail.com">explicitpupspc@gmail.com</a></li>
+      </ul>
+    </div>
+
+    <!-- Keep Newsletter Form -->
+    <div class="footer-col">
+      <h3 class="footer-title">Join Our Community</h3>
+      <p>Sign up to our newsletter to stay updated with the latest events, workshops, and opportunities.</p>
+      <form id="newsletter-form" action="#" method="post">
+        <input type="email" name="email" placeholder="Your email address" required style="padding: 10px; width: 100%; margin-top: 10px; border-radius: 4px; border: none;">
+        <button type="submit" style="background: var(--primary-blue); color: var(--light-gray); border: none; padding: 10px; width: 100%; margin-top: 10px; border-radius: 4px; cursor: pointer;">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="copyright">
+    &copy; 2025 Explorers in Communication and Information Technology (EXPLICIT). All Rights Reserved.
+  </div>
+</footer>
+
+  <!-- Facebook SDK -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" 
+          src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0">
+  </script>
 
   <!-- Newsletter Form Script -->
   <script>
     document.getElementById('newsletter-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('Thank you for subscribing to EXPLICIT updates!');
+      alert('Thank you for subscribing!');
       this.reset();
     });
   </script>
