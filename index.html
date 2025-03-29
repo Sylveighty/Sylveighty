@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EXPLICIT - Explorers in Communication and Information Technology</title>
-  <meta name="description" content="Official academic organization of BSIT students at PUP San Pedro Campus. Join us for tech workshops, networking, and collaborative projects.">
+  <meta name="description" content="Official academic organization of BSIT students at PUP San Pedro Campus. Join us for tech workshops and networking.">
+  <!-- Favicon -->
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <!-- Font Awesome for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
@@ -55,18 +57,11 @@
       align-items: center;
     }
     
-    .logo {
+    .logo-image {
       width: 50px;
       height: 50px;
-      background-color: var(--light-gray);
-      border-radius: 50%;
       margin-right: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--dark-blue);
-      font-weight: bold;
-      font-size: 1.5rem;
+      object-fit: contain;
     }
     
     .logo-text {
@@ -528,7 +523,8 @@
 <body>
   <header>
     <div class="logo-container">
-      <div class="logo">E</div>
+      <!-- Replace with your logo -->
+      <img src="images/logo.png" alt="EXPLICIT Logo" class="logo-image">
       <div class="logo-text">
         <h1>EXPLICIT</h1>
         <p>Explorers in Communication and Information Technology</p>
@@ -545,7 +541,7 @@
     </nav>
   </header>
 
-  <!-- HOME PAGE SECTION -->
+  <!-- HERO SECTION -->
   <section class="hero">
     <div class="hero-content">
       <h1>Explorers in <span>Communication</span> and Information Technology</h1>
@@ -557,6 +553,7 @@
     </div>
   </section>
 
+  <!-- WHAT WE OFFER SECTION -->
   <section class="section light-section">
     <h2 class="section-title">What We Offer</h2>
     <div class="features">
@@ -584,7 +581,7 @@
     </div>
   </section>
 
-  <!-- ABOUT US PAGE SECTION -->
+  <!-- ABOUT US SECTION -->
   <section class="section dark-section" id="about">
     <h2 class="section-title">About EXPLICIT</h2>
     <div class="about-content">
@@ -596,18 +593,18 @@
         </div>
       </div>
       <div class="about-img">
-        <!-- Image placeholder for about section -->
+        <!-- About section image -->
       </div>
     </div>
   </section>
 
-  <!-- EVENTS PAGE SECTION -->
+  <!-- EVENTS SECTION (Facebook Embedded) -->
   <section class="section light-section" id="events">
     <h2 class="section-title">Upcoming Events</h2>
     <div class="events-container">
       <div class="fb-page" 
            data-href="https://www.facebook.com/explicitpupspc" 
-           data-tabs="events" 
+           data-tabs="timeline" 
            data-width="1000" 
            data-height="600"
            data-small-header="false" 
@@ -619,7 +616,7 @@
     </div>
   </section>
 
-  <!-- GALLERY PAGE SECTION -->
+  <!-- GALLERY SECTION -->
   <section class="section dark-section" id="gallery">
     <h2 class="section-title">Our Gallery</h2>
     <div class="gallery">
@@ -650,54 +647,59 @@
     </div>
   </section>
 
-  <!-- CONTACT SECTION -->
-  <footer id="contact">
-    <div class="footer-content">
-      <div class="footer-col">
-        <h3 class="footer-title">EXPLICIT</h3>
-        <p>Explorers in Communication and Information Technology - A student-led organization fostering growth and collaboration.</p>
-        <div class="social-icons">
-          <a href="https://www.facebook.com/explicitpupspc" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h3 class="footer-title">Quick Links</h3>
-        <ul class="footer-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#events">Events</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="https://www.facebook.com/explicitpupspc">Facebook Group</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3 class="footer-title">Contact Us</h3>
-        <ul class="footer-links">
-          <li>explicit@university.edu</li>
-          <li>Student Center, Room 302</li>
-          <li>University Campus</li>
-          <li>Faculty Advisor: Prof. Jane Smith</li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3 class="footer-title">Join Our Community</h3>
-        <p>Sign up to our newsletter to stay updated with the latest events, workshops, and opportunities.</p>
-        <form id="newsletter-form" action="#" method="post">
-          <input type="email" name="email" placeholder="Your email address" required style="padding: 10px; width: 100%; margin-top: 10px; border-radius: 4px; border: none;">
-          <button type="submit" style="background: var(--primary-blue); color: var(--light-gray); border: none; padding: 10px; width: 100%; margin-top: 10px; border-radius: 4px; cursor: pointer;">Subscribe</button>
-        </form>
+  <!-- CONTACT/FOOTER SECTION -->
+<footer id="contact">
+  <div class="footer-content">
+    <!-- Keep Organization Info -->
+    <div class="footer-col">
+      <h3 class="footer-title">EXPLICIT</h3>
+      <p>Explorers in Communication and Information Technology - A student-led organization fostering growth and collaboration.</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/explicitpupspc" class="social-icon"><i class="fab fa-facebook-f"></i></a>
       </div>
     </div>
-    <div class="copyright">
-      &copy; 2025 Explorers in Communication and Information Technology (EXPLICIT). All Rights Reserved.
+
+    <!-- Keep Quick Links -->
+    <div class="footer-col">
+      <h3 class="footer-title">Quick Links</h3>
+      <ul class="footer-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://www.facebook.com/explicitpupspc">Facebook Group</a></li>
+      </ul>
     </div>
-  </footer>
+
+    <!-- Simplified Contact Info (Text Only) -->
+    <div class="footer-col">
+      <h3 class="footer-title">Contact Us</h3>
+      <ul class="footer-links">
+        <li><a href="https://www.facebook.com/explicitpupspc" target="_blank">Facebook Page</a></li>
+        <li><a href="mailto:explicitpupspc@gmail.com">explicitpupspc@gmail.com</a></li>
+      </ul>
+    </div>
+
+    <!-- Keep Newsletter Form -->
+    <div class="footer-col">
+      <h3 class="footer-title">Join Our Community</h3>
+      <p>Sign up to our newsletter to stay updated with the latest events, workshops, and opportunities.</p>
+      <form id="newsletter-form" action="#" method="post">
+        <input type="email" name="email" placeholder="Your email address" required style="padding: 10px; width: 100%; margin-top: 10px; border-radius: 4px; border: none;">
+        <button type="submit" style="background: var(--primary-blue); color: var(--light-gray); border: none; padding: 10px; width: 100%; margin-top: 10px; border-radius: 4px; cursor: pointer;">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="copyright">
+    &copy; 2025 Explorers in Communication and Information Technology (EXPLICIT). All Rights Reserved.
+  </div>
+</footer>
 
   <!-- Facebook SDK -->
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous" 
-          src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0">
+          src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0">
   </script>
 
   <!-- Newsletter Form Script -->
