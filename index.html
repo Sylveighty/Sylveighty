@@ -7,7 +7,11 @@
   <meta name="description" content="Official academic organization of BSIT students at PUP San Pedro Campus">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
   <style>
     :root {
@@ -21,27 +25,62 @@
       --dark-gray: #353433;
       --light-gray-alt: #a49c9c;
       --darkest-blue: #1f242c;
+      --font-main: 'Inter', 'Segoe UI', system-ui, sans-serif;
+      --font-heading: 'Montserrat', 'Segoe UI', sans-serif;
     }
     
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
     
     body {
       background-color: var(--light-gray);
       color: var(--dark-gray);
       line-height: 1.6;
+      font-family: var(--font-main);
+      font-weight: 400;
+      overflow-x: hidden;
     }
     
+    h1, h2, h3, .section-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    
+    a {
+      text-decoration: none;
+      position: relative;
+    }
+    
+    a:after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-blue);
+      transition: width 0.3s ease;
+    }
+    
+    a:hover:after,
+    a:focus:after {
+      width: 100%;
+    }
+    
+    /* Header Styles */
     header {
-      background: var(--dark-blue);
+      background: rgba(36, 52, 87, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       position: fixed;
       width: 100%;
       z-index: 1000;
@@ -50,6 +89,7 @@
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
     }
     
     .logo-container {
@@ -90,34 +130,10 @@
     
     nav ul li a {
       color: var(--light-gray);
-      text-decoration: none;
       font-weight: 500;
       transition: all 0.3s ease;
-      position: relative;
     }
     
-    nav ul li a:after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background: var(--primary-blue);
-      bottom: -5px;
-      left: 0;
-      transition: width 0.3s ease;
-    }
-    
-    nav ul li a:hover:after,
-    nav ul li a:focus:after {
-      width: 100%;
-    }
-
-    /* Focus styles */
-    a:focus, button:focus {
-      outline: 2px solid var(--primary-blue);
-      outline-offset: 3px;
-    }
-
     /* Mobile menu toggle */
     .menu-toggle {
       display: none;
@@ -126,15 +142,19 @@
       color: var(--light-gray);
       font-size: 1.5rem;
       cursor: pointer;
+      z-index: 1001;
     }
 
+    /* Hero Section */
     .hero {
       height: 100vh;
+      min-height: 600px;
       background: url('images/hero-bg.jpg') center/cover no-repeat;
       background-attachment: fixed;
       display: flex;
       align-items: center;
       position: relative;
+      overflow: hidden;
     }
     
     .hero:before {
@@ -145,30 +165,43 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(to right, rgba(31, 36, 44, 0.9), rgba(36, 52, 87, 0.7));
+      z-index: 1;
     }
     
     .hero-content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       color: var(--light-gray);
       padding: 0 5%;
       max-width: 800px;
       margin-left: 5%;
+      animation: fadeInUp 1s ease;
     }
     
-    h1 {
-      font-size: 3.5rem;
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
       margin-bottom: 1rem;
       line-height: 1.2;
     }
     
-    h1 span {
+    .hero h1 span {
       color: var(--primary-blue);
       display: block;
     }
     
     .tagline {
-      font-size: 1.5rem;
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
       margin-bottom: 2rem;
       color: var(--light-gray);
     }
@@ -176,26 +209,42 @@
     .cta-buttons {
       display: flex;
       gap: 1rem;
+      flex-wrap: wrap;
     }
     
     .cta-btn {
       padding: 0.8rem 2rem;
-      border-radius: 4px;
+      border-radius: 50px;
       font-weight: 600;
-      text-decoration: none;
       transition: all 0.3s ease;
       display: inline-flex;
       align-items: center;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
     }
     
     .primary-btn {
-      background: var(--primary-blue);
+      background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
       color: var(--light-gray);
       border: none;
     }
     
-    .primary-btn:hover {
-      background: var(--secondary-blue);
+    .primary-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, var(--secondary-blue), var(--primary-blue));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .primary-btn:hover::before {
+      opacity: 1;
     }
     
     .secondary-btn {
@@ -206,14 +255,21 @@
     
     .secondary-btn:hover {
       background: rgba(229, 229, 229, 0.1);
+      box-shadow: 0 0 15px rgba(229, 229, 229, 0.2);
     }
     
+    /* Section Styles */
     .section {
       padding: 5rem 5%;
+      position: relative;
     }
     
     .dark-section {
-      background: var(--navy-blue);
+      background: linear-gradient(
+        to bottom right,
+        rgba(59, 72, 95, 0.9),
+        rgba(31, 36, 44, 0.9)
+      );
       color: var(--light-gray);
     }
     
@@ -225,9 +281,14 @@
     .section-title {
       text-align: center;
       margin-bottom: 3rem;
-      font-size: 2.5rem;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
       position: relative;
       padding-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .section-title:hover {
+      transform: translateX(5px);
     }
     
     .light-section .section-title {
@@ -249,6 +310,7 @@
       transform: translateX(-50%);
     }
     
+    /* Features Section */
     .features {
       display: flex;
       flex-wrap: wrap;
@@ -260,11 +322,19 @@
       flex: 1;
       min-width: 300px;
       max-width: 400px;
-      background: var(--light-gray);
-      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    .feature-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
     }
     
     .feature-box:nth-child(1) .feature-img {
@@ -280,16 +350,16 @@
     }
     
     .dark-section .feature-box {
-      background: var(--darkest-blue);
-    }
-    
-    .feature-box:hover {
-      transform: translateY(-10px);
+      background: rgba(31, 36, 44, 0.5);
     }
     
     .feature-img {
       height: 200px;
-      background: var(--light-gray) url('images/workshop-placeholder.jpg') center/cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .feature-box:hover .feature-img {
+      transform: scale(1.05);
     }
     
     .feature-content {
@@ -314,6 +384,7 @@
       color: var(--light-gray-alt);
     }
     
+    /* About Section */
     .about-content {
       display: flex;
       flex-wrap: wrap;
@@ -326,16 +397,53 @@
       min-width: 300px;
     }
     
+    .about-text h3 {
+      margin: 1.5rem 0 0.5rem;
+      color: var(--primary-blue);
+    }
+    
     .about-img {
       flex: 1;
       min-width: 300px;
       height: 400px;
       background: url('images/about-img.jpg') center/cover;
-      border-radius: 8px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
     }
     
-    /* EVENTS SECTION STYLES */
+    .about-img:hover {
+      transform: scale(1.02);
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: flex-start;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .social-link {
+      width: 50px;
+      height: 50px;
+      background: var(--primary-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light-gray);
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .social-link:hover {
+      background: var(--secondary-blue);
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    
+    /* Events Section */
     .events-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -347,15 +455,16 @@
       height: 300px;
       background-size: cover;
       background-position: center;
-      border-radius: 8px;
+      border-radius: 16px;
       overflow: hidden;
       position: relative;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     
     .event-item:hover {
-      transform: scale(1.03);
+      transform: scale(1.02);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
     
     .event-item:before {
@@ -399,15 +508,16 @@
       background: var(--primary-blue);
       color: var(--light-gray);
       padding: 0.3rem 0.8rem;
-      border-radius: 4px;
+      border-radius: 50px;
       font-size: 0.9rem;
     }
     
-    /* GALLERY SECTION STYLES */
+    /* Gallery Section */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
+      grid-auto-flow: dense;
       margin-top: 2rem;
     }
     
@@ -415,15 +525,21 @@
       height: 250px;
       background-size: cover;
       background-position: center;
-      border-radius: 8px;
+      border-radius: 16px;
       overflow: hidden;
       position: relative;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .gallery-item:nth-child(3n) {
+      grid-column: span 2;
+      grid-row: span 2;
     }
     
     .gallery-item:hover {
-      transform: scale(1.03);
+      transform: scale(1.02);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
     
     .gallery-item:before {
@@ -458,36 +574,25 @@
       opacity: 1;
     }
     
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    
-    .social-link {
-      width: 50px;
-      height: 50px;
-      background: var(--primary-blue);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--light-gray);
-      font-size: 1.5rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    
-    .social-link:hover {
-      background: var(--secondary-blue);
-      transform: translateY(-5px);
-    }
-    
+    /* Footer Styles */
     footer {
       background: var(--darkest-blue);
       color: var(--light-gray);
       padding: 3rem 5%;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    footer:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('images/footer-pattern.png') center/cover;
+      opacity: 0.05;
+      z-index: 0;
     }
     
     .footer-content {
@@ -495,6 +600,8 @@
       flex-wrap: wrap;
       justify-content: space-between;
       gap: 2rem;
+      position: relative;
+      z-index: 1;
     }
     
     .footer-col {
@@ -530,7 +637,6 @@
     
     .footer-links a {
       color: var(--light-gray-alt);
-      text-decoration: none;
       transition: color 0.3s ease;
     }
     
@@ -553,23 +659,17 @@
       align-items: center;
       justify-content: center;
       color: var(--light-gray);
-      text-decoration: none;
       transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
     
     .social-icon:hover {
       background: var(--primary-blue);
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     }
     
-    .copyright {
-      text-align: center;
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(229, 229, 229, 0.1);
-      color: var(--light-gray-alt);
-    }
-
-    /* Form styles */
+    /* Form Styles */
     #newsletter-form {
       display: flex;
       flex-direction: column;
@@ -577,28 +677,41 @@
     }
 
     #newsletter-form input {
-      padding: 0.8rem;
-      border-radius: 4px;
-      border: 1px solid var(--light-gray-alt);
+      padding: 0.8rem 0;
+      border-radius: 0;
+      border: none;
+      border-bottom: 2px solid var(--light-gray-alt);
       background: rgba(255,255,255,0.1);
       color: var(--light-gray);
+      transition: all 0.3s ease;
+    }
+
+    #newsletter-form input:focus {
+      border-bottom-color: var(--primary-blue);
+      background: rgba(255,255,255,0.2);
+      outline: none;
     }
 
     #newsletter-form button {
       padding: 0.8rem;
-      border-radius: 4px;
+      border-radius: 50px;
       background: var(--primary-blue);
       color: var(--light-gray);
       border: none;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-top: 1rem;
     }
 
     #newsletter-form button:hover {
       background: var(--secondary-blue);
+      letter-spacing: 1px;
     }
 
-    /* Form feedback styles */
     .form-feedback {
       margin-top: 0.5rem;
       padding: 0.5rem;
@@ -626,7 +739,22 @@
       color: var(--light-gray-alt);
     }
 
-    /* Skip to content link */
+    .privacy-notice a {
+      color: var(--primary-blue);
+    }
+
+    /* Copyright */
+    .copyright {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(229, 229, 229, 0.1);
+      color: var(--light-gray-alt);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Accessibility Helpers */
     .skip-link {
       position: absolute;
       top: -40px;
@@ -642,7 +770,6 @@
       top: 0;
     }
 
-    /* Visually hidden helper */
     .sr-only {
       position: absolute;
       width: 1px;
@@ -654,63 +781,105 @@
       white-space: nowrap;
       border-width: 0;
     }
-    
+
+    /* Mobile Styles */
+    @media (max-width: 992px) {
+      .gallery-item:nth-child(3n) {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+    }
+
     @media (max-width: 768px) {
       header {
-        flex-direction: column;
+        flex-direction: row;
         padding: 1rem;
       }
       
       .logo-container {
-        margin-bottom: 1rem;
+        margin-bottom: 0;
       }
       
       nav ul {
-        flex-wrap: wrap;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: var(--dark-blue);
+        flex-direction: column;
         justify-content: center;
-        display: none;
+        align-items: center;
+        transition: right 0.3s ease;
+        z-index: 1000;
+        padding: 2rem;
       }
 
       nav ul.show {
-        display: flex;
+        right: 0;
       }
       
       nav ul li {
-        margin: 0.5rem;
+        margin: 1rem 0;
       }
       
-      h1 {
-        font-size: 2.5rem;
-      }
-      
-      .tagline {
-        font-size: 1.2rem;
-      }
-      
-      .cta-buttons {
-        flex-direction: column;
-      }
-      
-      .section {
-        padding: 3rem 1rem;
-      }
-      
-      .feature-box {
-        flex-direction: column;
-      }
-      
-      .feature-img {
-        width: 100%;
-        min-width: 100%;
-      }
-
       .menu-toggle {
         display: block;
       }
 
-      .events-gallery,
-      .gallery {
-        grid-template-columns: 1fr;
+      .hero-content {
+        margin-left: 0;
+        text-align: center;
+      }
+
+      .cta-buttons {
+        justify-content: center;
+      }
+
+      .about-content {
+        flex-direction: column;
+      }
+
+      .about-img {
+        order: -1;
+        margin-bottom: 2rem;
+      }
+
+      .social-links {
+        justify-content: center;
+      }
+
+      .section {
+        padding: 3rem 1rem;
+      }
+
+      .feature-box {
+        min-width: 100%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero h1 span {
+        display: inline;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cta-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .footer-col {
+        min-width: 100%;
+      }
+
+      nav ul {
+        width: 80%;
       }
     }
   </style>
@@ -741,7 +910,7 @@
 
   <!-- HERO SECTION -->
   <main id="main-content">
-    <section class="hero">
+    <section class="hero" data-aos="fade">
       <div class="hero-content">
         <h1>Explorers in <span>Communication</span> and Information Technology</h1>
         <p class="tagline">Connecting students, sharing knowledge, and pushing technological boundaries together</p>
@@ -753,24 +922,24 @@
     </section>
 
     <!-- WHAT WE OFFER SECTION -->
-    <section class="section light-section">
+    <section class="section light-section" data-aos="fade-up">
       <h2 class="section-title">What We Offer</h2>
       <div class="features">
-        <div class="feature-box">
+        <div class="feature-box" data-aos="fade-up" data-aos-delay="100">
           <div class="feature-img" aria-hidden="true"></div>
           <div class="feature-content">
             <h3 class="feature-title">Excellence in All Aspects</h3>
             <p>We cultivate a culture of high standards in academics, projects, and professional development through rigorous training and mentorship.</p>
           </div>
         </div>
-        <div class="feature-box">
+        <div class="feature-box" data-aos="fade-up" data-aos-delay="200">
           <div class="feature-img" aria-hidden="true"></div>
           <div class="feature-content">
             <h3 class="feature-title">A Collective of Aspiring IT Students</h3>
             <p>Join our vibrant community of tech enthusiasts where collaboration and knowledge-sharing drive innovation.</p>
           </div>
         </div>
-        <div class="feature-box">
+        <div class="feature-box" data-aos="fade-up" data-aos-delay="300">
           <div class="feature-img" aria-hidden="true"></div>
           <div class="feature-content">
             <h3 class="feature-title">Programs to Enforce Learning</h3>
@@ -781,10 +950,10 @@
     </section>
 
     <!-- ABOUT US SECTION -->
-    <section class="section dark-section" id="about">
+    <section class="section dark-section" id="about" data-aos="fade-up">
       <h2 class="section-title">About EXPLICIT</h2>
       <div class="about-content">
-        <div class="about-text">
+        <div class="about-text" data-aos="fade-right">
           <h3>Our Legacy</h3>
           <p>Founded in 2006 as <strong>SPECS</strong> (Students Proficient in Electronics and Communication System), we transitioned to <strong>EXPLICIT</strong> in 2010, marking a new era of technological exploration.</p>
           
@@ -798,18 +967,18 @@
             <a href="https://www.facebook.com/explicitpupspc" class="social-link" aria-label="Visit our Facebook page"><i class="fab fa-facebook-f"></i></a>
           </div>
         </div>
-        <div class="about-img" aria-label="EXPLICIT group photo">
+        <div class="about-img" aria-label="EXPLICIT group photo" data-aos="fade-left">
           <!-- Image will be loaded via CSS background -->
         </div>
       </div>
     </section>
 
     <!-- EVENTS SECTION -->
-    <section class="section light-section" id="events">
+    <section class="section light-section" id="events" data-aos="fade-up">
       <h2 class="section-title">Events</h2>
       <div class="events-gallery">
         <!-- Event 1 -->
-        <a href="https://www.facebook.com/photo/?fbid=635793625839637&set=a.139447742140897" class="event-item" style="background-image: url('images/events/event1.jpg');" aria-label="Tech Innovation Summit event">
+        <a href="https://www.facebook.com/photo/?fbid=635793625839637&set=a.139447742140897" class="event-item" style="background-image: url('images/events/event1.jpg');" aria-label="Tech Innovation Summit event" data-aos="zoom-in">
           <div class="event-item-content">
             <div class="event-item-date">March 14, 2025</div>
             <h3 class="event-item-title">Mastering Modern Web Development Frameworks</h3>
@@ -817,7 +986,7 @@
         </a>
         
         <!-- Event 2 -->
-        <a href="https://www.facebook.com/photo/?fbid=630391456379854&set=a.139447742140897" class="event-item" style="background-image: url('images/events/event2.jpg');" aria-label="Code Marathon event">
+        <a href="https://www.facebook.com/photo/?fbid=630391456379854&set=a.139447742140897" class="event-item" style="background-image: url('images/events/event2.jpg');" aria-label="Code Marathon event" data-aos="zoom-in" data-aos-delay="100">
           <div class="event-item-content">
             <div class="event-item-date">March 8, 2025</div>
             <h3 class="event-item-title">Bringing Ideas To Life: Character Design Essentials</h3>
@@ -825,7 +994,7 @@
         </a>
         
         <!-- Event 3 -->
-        <a href="https://www.facebook.com/photo/?fbid=621837863901880&set=a.139447742140897" class="event-item" style="background-image: url('images/events/event3.jpg');" aria-label="Career Preparation Workshop">
+        <a href="https://www.facebook.com/photo/?fbid=621837863901880&set=a.139447742140897" class="event-item" style="background-image: url('images/events/event3.jpg');" aria-label="Career Preparation Workshop" data-aos="zoom-in" data-aos-delay="200">
           <div class="event-item-content">
             <div class="event-item-date">February 23, 2025</div>
             <h3 class="event-item-title">Lead The Future: Cultivating The Next Wave Of IT Leaders</h3>
@@ -833,7 +1002,7 @@
         </a>
 
         <!-- Event 4 -->
-        <a href="https://www.facebook.com/photo/?fbid=609899288429071&set=pcb.609900408428959" class="event-item" style="background-image: url('images/events/event4.jpg');" aria-label="Alumni Networking Night">
+        <a href="https://www.facebook.com/photo/?fbid=609899288429071&set=pcb.609900408428959" class="event-item" style="background-image: url('images/events/event4.jpg');" aria-label="Alumni Networking Night" data-aos="zoom-in" data-aos-delay="300">
           <div class="event-item-content">
             <div class="event-item-date">February 7, 2025</div>
             <h3 class="event-item-title">Celebrating Love Through Art</h3>
@@ -841,7 +1010,7 @@
         </a>
 
         <!-- Event 5 -->
-        <a href="https://www.facebook.com/photo/?fbid=606081665477500&set=a.139447742140897" class="event-item" style="background-image: url('images/events/event5.jpg');" aria-label="New Year Hackathon">
+        <a href="https://www.facebook.com/photo/?fbid=606081665477500&set=a.139447742140897" class="event-item" style="background-image: url('images/events/event5.jpg');" aria-label="New Year Hackathon" data-aos="zoom-in" data-aos-delay="400">
           <div class="event-item-content">
             <div class="event-item-date">February 1, 2025</div>
             <h3 class="event-item-title">ProTech: Forging Digital Resilience in Networking & IT Security</h3>
@@ -851,25 +1020,25 @@
     </section>
 
     <!-- GALLERY SECTION -->
-    <section class="section dark-section" id="gallery">
+    <section class="section dark-section" id="gallery" data-aos="fade-up">
       <h2 class="section-title">Our Gallery</h2>
       <div class="gallery">
-        <figure class="gallery-item" style="background-image: url('images/gallery/gallery1.jpg');" aria-label="EXPLICIT members participating in a coding workshop">
+        <figure class="gallery-item" style="background-image: url('images/gallery/gallery1.jpg');" aria-label="EXPLICIT members participating in a coding workshop" data-aos="zoom-in">
           <figcaption class="gallery-item-title">Coding Workshop 2025</figcaption>
         </figure>
-        <figure class="gallery-item" style="background-image: url('images/gallery/gallery2.jpg');" aria-label="Group photo from the annual IT Week event">
+        <figure class="gallery-item" style="background-image: url('images/gallery/gallery2.jpg');" aria-label="Group photo from the annual IT Week event" data-aos="zoom-in" data-aos-delay="100">
           <figcaption class="gallery-item-title">IT Week 2025</figcaption>
         </figure>
-        <figure class="gallery-item" style="background-image: url('images/gallery/gallery3.jpg');" aria-label="Students working on hardware projects">
+        <figure class="gallery-item" style="background-image: url('images/gallery/gallery3.jpg');" aria-label="Students working on hardware projects" data-aos="zoom-in" data-aos-delay="200">
           <figcaption class="gallery-item-title">Hardware Projects</figcaption>
         </figure>
-        <figure class="gallery-item" style="background-image: url('images/gallery/gallery4.jpg');" aria-label="Guest speaker presentation">
+        <figure class="gallery-item" style="background-image: url('images/gallery/gallery4.jpg');" aria-label="Guest speaker presentation" data-aos="zoom-in" data-aos-delay="300">
           <figcaption class="gallery-item-title">Guest Speaker Session</figcaption>
         </figure>
-        <figure class="gallery-item" style="background-image: url('images/gallery/gallery5.jpg');" aria-label="Team building activity">
+        <figure class="gallery-item" style="background-image: url('images/gallery/gallery5.jpg');" aria-label="Team building activity" data-aos="zoom-in" data-aos-delay="400">
           <figcaption class="gallery-item-title">Team Building</figcaption>
         </figure>
-        <figure class="gallery-item" style="background-image: url('images/gallery/gallery6.jpg');" aria-label="Award ceremony for members">
+        <figure class="gallery-item" style="background-image: url('images/gallery/gallery6.jpg');" aria-label="Award ceremony for members" data-aos="zoom-in" data-aos-delay="500">
           <figcaption class="gallery-item-title">Award Ceremony</figcaption>
         </figure>
       </div>
@@ -877,16 +1046,16 @@
   </main>
 
   <!-- CONTACT SECTION -->
-  <footer id="contact">
+  <footer id="contact" data-aos="fade-up">
     <div class="footer-content">
-      <div class="footer-col">
+      <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
         <h3 class="footer-title">EXPLICIT</h3>
         <p>Explorers in Communication and Information Technology - A student-led organization fostering growth and collaboration.</p>
         <div class="social-icons">
           <a href="https://www.facebook.com/explicitpupspc" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
         </div>
       </div>
-      <div class="footer-col">
+      <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
         <h3 class="footer-title">Quick Links</h3>
         <ul class="footer-links">
           <li><a href="#">Home</a></li>
@@ -895,14 +1064,14 @@
           <li><a href="#gallery">Gallery</a></li>
         </ul>
       </div>
-      <div class="footer-col">
+      <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
         <h3 class="footer-title">Contact Us</h3>
         <ul class="footer-links">
           <li><a href="https://www.facebook.com/explicitpupspc" target="_blank" rel="noopener noreferrer">Facebook Page</a></li>
           <li><a href="mailto:explicitpupspc@gmail.com">explicitpupspc@gmail.com</a></li>
         </ul>
       </div>
-      <div class="footer-col">
+      <div class="footer-col" data-aos="fade-up" data-aos-delay="400">
         <h3 class="footer-title">Join Our Community</h3>
         <p>Sign up to our newsletter to stay updated with the latest events and opportunities.</p>
         <form id="newsletter-form" action="#" method="post">
@@ -910,7 +1079,7 @@
           <input type="email" id="email" name="email" placeholder="Your email address" required>
           <div id="form-feedback" class="form-feedback" role="alert"></div>
           <div class="privacy-notice">
-            <small>By subscribing, you agree to our <a href="#" style="color: var(--primary-blue);">Privacy Policy</a></small>
+            <small>By subscribing, you agree to our <a href="#">Privacy Policy</a></small>
           </div>
           <button type="submit">Subscribe</button>
         </form>
@@ -921,7 +1090,51 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    // Initialize AOS (Animate On Scroll)
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+        duration: 800,
+        once: true,
+        easing: 'ease-in-out',
+        offset: 100
+      });
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+
+    menuToggle.addEventListener('click', function() {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !expanded);
+      mainNav.classList.toggle('show');
+      
+      // Toggle hamburger icon
+      const icon = this.querySelector('i');
+      if (expanded) {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      } else {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      }
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('#main-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          menuToggle.setAttribute('aria-expanded', 'false');
+          mainNav.classList.remove('show');
+          menuToggle.querySelector('i').classList.remove('fa-times');
+          menuToggle.querySelector('i').classList.add('fa-bars');
+        }
+      });
+    });
+
+    // Newsletter form handling
     document.getElementById('newsletter-form').addEventListener('submit', function(e) {
       e.preventDefault();
       const email = document.getElementById('email').value;
@@ -947,58 +1160,48 @@
       }, 500);
     });
 
-    // Mobile menu toggle with improved accessibility
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mainNav = document.getElementById('main-nav');
-
-    menuToggle.addEventListener('click', function() {
-      const expanded = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', !expanded);
-      mainNav.classList.toggle('show');
-      
-      // Close menu when clicking on a link
-      if (!expanded) {
-        mainNav.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', () => {
-            this.setAttribute('aria-expanded', 'false');
-            mainNav.classList.remove('show');
-          });
-        });
-      }
-    });
-
-    // Enhanced lazy loading with Intersection Observer
-    document.addEventListener('DOMContentLoaded', function() {
-      if ('loading' in HTMLImageElement.prototype) {
-        // Native lazy loading is supported
-        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-        lazyImages.forEach(img => {
-          img.loading = 'lazy';
-        });
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.style.padding = '0.5rem 5%';
+        header.style.background = 'rgba(36, 52, 87, 0.95)';
       } else {
-        // Fallback using Intersection Observer
-        const lazyLoad = function(entries, observer) {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const img = entry.target;
-              if (img.dataset.src) {
-                img.src = img.dataset.src;
-                observer.unobserve(img);
-              }
-            }
-          });
-        };
-        
-        const observer = new IntersectionObserver(lazyLoad, {
-          rootMargin: '100px 0px',
-          threshold: 0.01
-        });
-        
-        document.querySelectorAll('img[data-src]').forEach(img => {
-          observer.observe(img);
-        });
+        header.style.padding = '1rem 5%';
+        header.style.background = 'rgba(36, 52, 87, 0.8)';
       }
     });
+
+    // Lazy loading for images
+    if ('loading' in HTMLImageElement.prototype) {
+      // Native lazy loading is supported
+      const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+      lazyImages.forEach(img => {
+        img.loading = 'lazy';
+      });
+    } else {
+      // Fallback using Intersection Observer
+      const lazyLoad = function(entries, observer) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            if (img.dataset.src) {
+              img.src = img.dataset.src;
+              observer.unobserve(img);
+            }
+          }
+        });
+      };
+      
+      const observer = new IntersectionObserver(lazyLoad, {
+        rootMargin: '100px 0px',
+        threshold: 0.01
+      });
+      
+      document.querySelectorAll('img[data-src]').forEach(img => {
+        observer.observe(img);
+      });
+    }
   </script>
 </body>
 </html>
