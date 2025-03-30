@@ -6,6 +6,7 @@
   <title>EXPLICIT - Explorers in Communication and Information Technology</title>
   <meta name="description" content="Official academic organization of BSIT students at PUP San Pedro Campus">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
   <style>
@@ -106,8 +107,15 @@
       transition: width 0.3s ease;
     }
     
-    nav ul li a:hover:after {
+    nav ul li a:hover:after,
+    nav ul li a:focus:after {
       width: 100%;
+    }
+
+    /* Focus styles */
+    a:focus, button:focus {
+      outline: 2px solid var(--primary-blue);
+      outline-offset: 3px;
     }
 
     /* Mobile menu toggle */
@@ -258,8 +266,8 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
     }
-	
-	.feature-box:nth-child(1) .feature-img {
+    
+    .feature-box:nth-child(1) .feature-img {
       background: var(--light-gray) url('images/excellence-bg.jpg') center/cover;
     }
     
@@ -327,7 +335,7 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
     
-    /* EVENTS SECTION STYLES - Now matching gallery style */
+    /* EVENTS SECTION STYLES */
     .events-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -590,6 +598,34 @@
       background: var(--secondary-blue);
     }
 
+    /* Form feedback styles */
+    .form-feedback {
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      border-radius: 4px;
+      display: none;
+    }
+    
+    .form-feedback.visible {
+      display: block;
+    }
+    
+    .form-feedback.success {
+      background-color: rgba(40, 167, 69, 0.2);
+      color: #28a745;
+    }
+    
+    .form-feedback.error {
+      background-color: rgba(220, 53, 69, 0.2);
+      color: #dc3545;
+    }
+
+    .privacy-notice {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--light-gray-alt);
+    }
+
     /* Skip to content link */
     .skip-link {
       position: absolute;
@@ -683,7 +719,7 @@
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <header>
     <div class="logo-container">
-      <img src="images/logo.png" alt="EXPLICIT Logo" class="logo-image" width="50" height="50">
+      <img src="images/logo.png" alt="EXPLICIT Logo" class="logo-image" width="50" height="50" loading="lazy">
       <div class="logo-text">
         <h1>EXPLICIT</h1>
         <p>Explorers in Communication and Information Technology</p>
@@ -694,7 +730,7 @@
     </button>
     <nav>
       <ul id="main-nav">
-        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#" aria-current="page">Home</a></li>
         <li><a href="#about">About Us</a></li>
         <li><a href="#events">Events</a></li>
         <li><a href="#gallery">Gallery</a></li>
@@ -717,32 +753,32 @@
     </section>
 
     <!-- WHAT WE OFFER SECTION -->
-  <section class="section light-section">
-    <h2 class="section-title">What We Offer</h2>
-    <div class="features">
-      <div class="feature-box">
-        <div class="feature-img" aria-hidden="true"></div>
-        <div class="feature-content">
-          <h3 class="feature-title">Excellence in All Aspects</h3>
-          <p>We cultivate a culture of high standards in academics, projects, and professional development through rigorous training and mentorship.</p>
+    <section class="section light-section">
+      <h2 class="section-title">What We Offer</h2>
+      <div class="features">
+        <div class="feature-box">
+          <div class="feature-img" aria-hidden="true"></div>
+          <div class="feature-content">
+            <h3 class="feature-title">Excellence in All Aspects</h3>
+            <p>We cultivate a culture of high standards in academics, projects, and professional development through rigorous training and mentorship.</p>
+          </div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-img" aria-hidden="true"></div>
+          <div class="feature-content">
+            <h3 class="feature-title">A Collective of Aspiring IT Students</h3>
+            <p>Join our vibrant community of tech enthusiasts where collaboration and knowledge-sharing drive innovation.</p>
+          </div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-img" aria-hidden="true"></div>
+          <div class="feature-content">
+            <h3 class="feature-title">Programs to Enforce Learning</h3>
+            <p>Structured workshops and hands-on projects bridge the gap between theory and real-world application.</p>
+          </div>
         </div>
       </div>
-      <div class="feature-box">
-        <div class="feature-img" aria-hidden="true"></div>
-        <div class="feature-content">
-          <h3 class="feature-title">A Collective of Aspiring IT Students</h3>
-          <p>Join our vibrant community of tech enthusiasts where collaboration and knowledge-sharing drive innovation.</p>
-        </div>
-      </div>
-      <div class="feature-box">
-        <div class="feature-img" aria-hidden="true"></div>
-        <div class="feature-content">
-          <h3 class="feature-title">Programs to Enforce Learning</h3>
-          <p>Structured workshops and hands-on projects bridge the gap between theory and real-world application.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
     <!-- ABOUT US SECTION -->
     <section class="section dark-section" id="about">
@@ -769,73 +805,73 @@
     </section>
 
     <!-- EVENTS SECTION -->
-<section class="section light-section" id="events">
-  <h2 class="section-title">Events</h2>
-  <div class="events-gallery">
-    <!-- Event 1 -->
-    <a href="https://www.facebook.com/photo/?fbid=635793625839637&set=a.139447742140897" class="event-item" style="background-image: url('images/events/event1.jpg');" aria-label="Tech Innovation Summit event">
-      <div class="event-item-content">
-        <div class="event-item-date">March 14, 2025</div>
-        <h3 class="event-item-title">Mastering Modern Web Development Frameworks</h3>
-      </div>
-    </a>
-    
-    <!-- Event 2 -->
-    <a href="https://www.facebook.com/photo/?fbid=630391456379854&set=a.139447742140897" class="event-item" style="background-image: url('images/events/event2.jpg');" aria-label="Code Marathon event">
-      <div class="event-item-content">
-        <div class="event-item-date">March 8, 2025</div>
-        <h3 class="event-item-title">Bringing Ideas To Life: Character Design Essentials</h3>
-      </div>
-    </a>
-    
-    <!-- Event 3 -->
-    <a href="https://www.facebook.com/photo/?fbid=621837863901880&set=a.139447742140897" class="event-item" style="background-image: url('images/events/event3.jpg');" aria-label="Career Preparation Workshop">
-      <div class="event-item-content">
-        <div class="event-item-date">February 23, 2025</div>
-        <h3 class="event-item-title">Lead The Future: Cultivating The Next Wave Of IT Leaders</h3>
-      </div>
-    </a>
+    <section class="section light-section" id="events">
+      <h2 class="section-title">Events</h2>
+      <div class="events-gallery">
+        <!-- Event 1 -->
+        <a href="https://www.facebook.com/photo/?fbid=635793625839637&set=a.139447742140897" class="event-item" style="background-image: url('images/events/event1.jpg');" aria-label="Tech Innovation Summit event">
+          <div class="event-item-content">
+            <div class="event-item-date">March 14, 2025</div>
+            <h3 class="event-item-title">Mastering Modern Web Development Frameworks</h3>
+          </div>
+        </a>
+        
+        <!-- Event 2 -->
+        <a href="https://www.facebook.com/photo/?fbid=630391456379854&set=a.139447742140897" class="event-item" style="background-image: url('images/events/event2.jpg');" aria-label="Code Marathon event">
+          <div class="event-item-content">
+            <div class="event-item-date">March 8, 2025</div>
+            <h3 class="event-item-title">Bringing Ideas To Life: Character Design Essentials</h3>
+          </div>
+        </a>
+        
+        <!-- Event 3 -->
+        <a href="https://www.facebook.com/photo/?fbid=621837863901880&set=a.139447742140897" class="event-item" style="background-image: url('images/events/event3.jpg');" aria-label="Career Preparation Workshop">
+          <div class="event-item-content">
+            <div class="event-item-date">February 23, 2025</div>
+            <h3 class="event-item-title">Lead The Future: Cultivating The Next Wave Of IT Leaders</h3>
+          </div>
+        </a>
 
-    <!-- NEW Event 4 -->
-    <a href="https://www.facebook.com/photo/?fbid=609899288429071&set=pcb.609900408428959" class="event-item" style="background-image: url('images/events/event4.jpg');" aria-label="Alumni Networking Night">
-      <div class="event-item-content">
-        <div class="event-item-date">February 7, 2025</div>
-        <h3 class="event-item-title">Celebrating Love Through Art</h3>
-      </div>
-    </a>
+        <!-- Event 4 -->
+        <a href="https://www.facebook.com/photo/?fbid=609899288429071&set=pcb.609900408428959" class="event-item" style="background-image: url('images/events/event4.jpg');" aria-label="Alumni Networking Night">
+          <div class="event-item-content">
+            <div class="event-item-date">February 7, 2025</div>
+            <h3 class="event-item-title">Celebrating Love Through Art</h3>
+          </div>
+        </a>
 
-    <!-- NEW Event 5 -->
-    <a href="https://www.facebook.com/photo/?fbid=606081665477500&set=a.139447742140897" class="event-item" style="background-image: url('images/events/event5.jpg');" aria-label="New Year Hackathon">
-      <div class="event-item-content">
-        <div class="event-item-date">February 1, 2025</div>
-        <h3 class="event-item-title">ProTech: Forging Digital Resilience in Networking & IT Security</h3>
+        <!-- Event 5 -->
+        <a href="https://www.facebook.com/photo/?fbid=606081665477500&set=a.139447742140897" class="event-item" style="background-image: url('images/events/event5.jpg');" aria-label="New Year Hackathon">
+          <div class="event-item-content">
+            <div class="event-item-date">February 1, 2025</div>
+            <h3 class="event-item-title">ProTech: Forging Digital Resilience in Networking & IT Security</h3>
+          </div>
+        </a>
       </div>
-    </a>
-  </div>
-</section>
+    </section>
 
     <!-- GALLERY SECTION -->
     <section class="section dark-section" id="gallery">
       <h2 class="section-title">Our Gallery</h2>
       <div class="gallery">
-        <div class="gallery-item" style="background-image: url('images/gallery/gallery1.jpg');" aria-label="">
-          <h3 class="gallery-item-title"></h3>
-        </div>
-        <div class="gallery-item" style="background-image: url('images/gallery/gallery2.jpg');" aria-label="">
-          <h3 class="gallery-item-title"></h3>
-        </div>
-        <div class="gallery-item" style="background-image: url('images/gallery/gallery3.jpg');" aria-label="">
-          <h3 class="gallery-item-title"></h3>
-        </div>
-        <div class="gallery-item" style="background-image: url('images/gallery/gallery4.jpg');" aria-label="">
-          <h3 class="gallery-item-title"></h3>
-        </div>
-        <div class="gallery-item" style="background-image: url('images/gallery/gallery5.jpg');" aria-label="">
-          <h3 class="gallery-item-title"></h3>
-        </div>
-        <div class="gallery-item" style="background-image: url('images/gallery/gallery6.jpg');" aria-label="">
-          <h3 class="gallery-item-title"></h3>
-        </div>
+        <figure class="gallery-item" style="background-image: url('images/gallery/gallery1.jpg');" aria-label="EXPLICIT members participating in a coding workshop">
+          <figcaption class="gallery-item-title">Coding Workshop 2025</figcaption>
+        </figure>
+        <figure class="gallery-item" style="background-image: url('images/gallery/gallery2.jpg');" aria-label="Group photo from the annual IT Week event">
+          <figcaption class="gallery-item-title">IT Week 2025</figcaption>
+        </figure>
+        <figure class="gallery-item" style="background-image: url('images/gallery/gallery3.jpg');" aria-label="Students working on hardware projects">
+          <figcaption class="gallery-item-title">Hardware Projects</figcaption>
+        </figure>
+        <figure class="gallery-item" style="background-image: url('images/gallery/gallery4.jpg');" aria-label="Guest speaker presentation">
+          <figcaption class="gallery-item-title">Guest Speaker Session</figcaption>
+        </figure>
+        <figure class="gallery-item" style="background-image: url('images/gallery/gallery5.jpg');" aria-label="Team building activity">
+          <figcaption class="gallery-item-title">Team Building</figcaption>
+        </figure>
+        <figure class="gallery-item" style="background-image: url('images/gallery/gallery6.jpg');" aria-label="Award ceremony for members">
+          <figcaption class="gallery-item-title">Award Ceremony</figcaption>
+        </figure>
       </div>
     </section>
   </main>
@@ -872,6 +908,10 @@
         <form id="newsletter-form" action="#" method="post">
           <label for="email" class="sr-only">Email address</label>
           <input type="email" id="email" name="email" placeholder="Your email address" required>
+          <div id="form-feedback" class="form-feedback" role="alert"></div>
+          <div class="privacy-notice">
+            <small>By subscribing, you agree to our <a href="#" style="color: var(--primary-blue);">Privacy Policy</a></small>
+          </div>
           <button type="submit">Subscribe</button>
         </form>
       </div>
@@ -881,15 +921,33 @@
     </div>
   </footer>
 
-  <!-- Newsletter Form Script -->
   <script>
     document.getElementById('newsletter-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('Thank you for subscribing to EXPLICIT updates!');
-      this.reset();
+      const email = document.getElementById('email').value;
+      const feedback = document.getElementById('form-feedback');
+      
+      // Simple validation
+      if (!email || !email.includes('@')) {
+        feedback.textContent = 'Please enter a valid email address';
+        feedback.className = 'form-feedback visible error';
+        return;
+      }
+      
+      // Simulate form submission
+      setTimeout(() => {
+        feedback.textContent = 'Thank you for subscribing to EXPLICIT updates!';
+        feedback.className = 'form-feedback visible success';
+        this.reset();
+        
+        // Clear feedback after 5 seconds
+        setTimeout(() => {
+          feedback.className = 'form-feedback';
+        }, 5000);
+      }, 500);
     });
 
-    // Mobile menu toggle
+    // Mobile menu toggle with improved accessibility
     const menuToggle = document.querySelector('.menu-toggle');
     const mainNav = document.getElementById('main-nav');
 
@@ -897,30 +955,48 @@
       const expanded = this.getAttribute('aria-expanded') === 'true';
       this.setAttribute('aria-expanded', !expanded);
       mainNav.classList.toggle('show');
+      
+      // Close menu when clicking on a link
+      if (!expanded) {
+        mainNav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            this.setAttribute('aria-expanded', 'false');
+            mainNav.classList.remove('show');
+          });
+        });
+      }
     });
 
-    // Add lazy loading to images
+    // Enhanced lazy loading with Intersection Observer
     document.addEventListener('DOMContentLoaded', function() {
-      const lazyImages = [].slice.call(document.querySelectorAll('img[loading="lazy"]'));
-      
       if ('loading' in HTMLImageElement.prototype) {
         // Native lazy loading is supported
+        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
         lazyImages.forEach(img => {
           img.loading = 'lazy';
         });
       } else {
-        // Fallback for browsers without native lazy loading
-        const lazyLoad = function() {
-          lazyImages.forEach(img => {
-            if (img.getBoundingClientRect().top < window.innerHeight + 100 && !img.src) {
-              img.src = img.dataset.src;
+        // Fallback using Intersection Observer
+        const lazyLoad = function(entries, observer) {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              if (img.dataset.src) {
+                img.src = img.dataset.src;
+                observer.unobserve(img);
+              }
             }
           });
         };
         
-        window.addEventListener('scroll', lazyLoad);
-        window.addEventListener('resize', lazyLoad);
-        lazyLoad();
+        const observer = new IntersectionObserver(lazyLoad, {
+          rootMargin: '100px 0px',
+          threshold: 0.01
+        });
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+          observer.observe(img);
+        });
       }
     });
   </script>
